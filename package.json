@@ -1,0 +1,23 @@
+{
+  "name": "restroom-monitor-web",
+  "version": "0.0.1",
+  "description": "The website client for showing the restroom status",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/onebytegone/restroom-monitor-web.git"
+  },
+  "author": "Ethan Smith",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/onebytegone/restroom-monitor-web/issues"
+  },
+  "homepage": "https://github.com/onebytegone/restroom-monitor-web",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-sass": "^1.0.0"
+  }
+}
