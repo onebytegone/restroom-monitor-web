@@ -1,0 +1,15 @@
+html {
+   background-color: $color-background;
+   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+   color: $color-text;
+}
+
+a {
+   color: $color-link;
+   &:hover {
+      color: $color-link--hover;
+   }
+   &:visited {
+      color: $color-link--visited;
+   }
+}
