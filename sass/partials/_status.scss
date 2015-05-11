@@ -1,0 +1,15 @@
+.status {
+   .sign {
+      display: block;
+      text-align: center;
+      font-size: 300px;
+      color: $color-sign-unknown;
+      &.jsAvailable {
+         color: $color-sign-available;
+      }
+      &.jsUnavailable {
+         color: $color-sign-not-available;
+      }
+   }
+}
+
