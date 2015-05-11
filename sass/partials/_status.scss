@@ -1,15 +1,39 @@
 .status {
-   .sign {
-      display: block;
-      text-align: center;
-      font-size: 300px;
-      color: $color-sign-unknown;
-      &.jsAvailable {
-         color: $color-sign-available;
-      }
-      &.jsUnavailable {
-         color: $color-sign-not-available;
-      }
+   text-align: center;
+}
+
+.sign {
+   display: block;
+   text-align: center;
+   font-size: 300px;
+   color: $color-sign-unknown;
+   .jsAvailable & {
+      color: $color-sign-available;
+   }
+   .jsUnavailable & {
+      color: $color-sign-not-available;
    }
 }
 
+.banner {
+   font-size: 18px;
+   margin-top: 0.3em;
+   h1 {
+      font-weight: normal;
+      font-size: 2em;
+      margin: 0;
+      padding: 0;
+      color: $color-status-text-unknown;
+      .jsAvailable & {
+         color: $color-status-text-available;
+      }
+      .jsUnavailable & {
+         color: $color-status-text-not-available;
+      }
+   }
+   p {
+      margin: 4px 0;
+      padding: 0;
+      color: $color-detail-text;
+   }
+}

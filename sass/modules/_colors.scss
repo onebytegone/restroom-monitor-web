@@ -9,3 +9,8 @@ $color-link--visited: #f00;
 $color-sign-unknown: #888;
 $color-sign-available: #00B244;
 $color-sign-not-available: #B21209;
+
+$color-status-text-unknown: #444;
+$color-status-text-available: $color-sign-available;
+$color-status-text-not-available: $color-sign-not-available;
+$color-detail-text: #999;
