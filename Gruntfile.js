@@ -3,8 +3,8 @@ module.exports = function(grunt) {
       pkg: grunt.file.readJSON('package.json'),
       watch: {
          sass: {
-            files: ['sass/**/*.{scss,sass}'],
-            tasks: ['sass:dist']
+            files: ['sass/**/*.{scss,sass}', 'js/**/*.js'],
+            tasks: ['sass:dist', 'browserify:dist']
          }
       },
       sass: {
@@ -17,9 +17,16 @@ module.exports = function(grunt) {
                'combined_files/css/styles.css': 'sass/main.scss'
             }
          }
+      },
+      browserify: {
+         dist: {
+            src: ['js/app.js'],
+            dest: 'combined_files/js/script.js'
+         }
       }
    });
-   grunt.registerTask('default', ['sass:dist', 'watch']);
+   grunt.registerTask('default', ['sass:dist', 'browserify:dist']);
    grunt.loadNpmTasks('grunt-sass');
+   grunt.loadNpmTasks('grunt-browserify');
    grunt.loadNpmTasks('grunt-contrib-watch');
 };
