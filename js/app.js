@@ -13,20 +13,19 @@ setInterval(updateStatus, config.interval);
  */
 function updateStatus() {
    $.getJSON( config.api, function( data ) {
-      var date = new Date(data.data[0].date*1000);
+      var date = new Date(data.date*1000);
       var options = {
          year: "numeric", month: "numeric", day: "numeric",
          hour: "2-digit", minute: "2-digit"
       };
       var formattedDate = date.toLocaleTimeString("en-us", options);
 
-      if (data.data[0].status === 'closed') {
+      if (data.status === 'closed') {
          updateDisplay('jsUnavailable', 'Unavailable', formattedDate);
          alertRequested(false);
          changeFavicon('img/closedicon.gif');
       }else {
          updateDisplay('jsAvailable', 'Available', formattedDate);
-         alertButtonUpdate(hide=true);
          if (alertRequested()) {
             postNotification();
          }
