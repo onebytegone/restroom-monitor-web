@@ -1,4 +1,14 @@
-# restroom-monitor-web
+# Restroom Monitor Web
+
+This is a web client fir the restroom monitor project.
+
+
+## Setup
+
+The build process is controlled by a grunt task. To build all the need files, from the main project directory run:
+```
+grunt
+```
 
 
 ## Sections for project
