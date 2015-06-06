@@ -22,14 +22,14 @@ function updateStatus() {
 
       if (data.status === 'closed') {
          updateDisplay('jsUnavailable', 'Unavailable', formattedDate);
-         changeFavicon('img/closedicon.gif');
+         changeFavicon('assets/img/closedsign.gif');
       }else {
          updateDisplay('jsAvailable', 'Available', formattedDate);
          if (alertRequested()) {
             postNotification();
          }
          alertRequested(false);
-         changeFavicon('img/openicon.gif');
+         changeFavicon('assets/img/opensign.gif');
       }
 
    });
@@ -142,7 +142,7 @@ function isNotificationAvailable() {
 function changeFavicon(src) {
    var link = document.createElement('link'),
       oldLink = document.getElementById('dynamic-favicon');
-   link.id = 'js_dynamic-favicon';
+   link.id = 'dynamic-favicon';
    link.rel = 'shortcut icon';
    link.href = src;
    if (oldLink) {
