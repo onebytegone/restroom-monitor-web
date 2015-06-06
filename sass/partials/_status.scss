@@ -46,7 +46,8 @@
    border: solid 2px #444;
    border-radius: 6px;
    text-decoration: none;
-   color: #444;
+   color: $color-alert-button;
+   cursor: pointer;
    .icon-alert {
       color: #333;
       margin-right: 0.4em;
@@ -54,6 +55,9 @@
    }
    .jsUnavailable & {
       display: inline-block;
+   }
+   &:hover {
+      color: $color-alert-button--hover;
    }
 }
 
