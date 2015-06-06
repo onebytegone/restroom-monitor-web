@@ -22,7 +22,6 @@ function updateStatus() {
 
       if (data.status === 'closed') {
          updateDisplay('jsUnavailable', 'Unavailable', formattedDate);
-         alertRequested(false);
          changeFavicon('img/closedicon.gif');
       }else {
          updateDisplay('jsAvailable', 'Available', formattedDate);
