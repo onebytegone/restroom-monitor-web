@@ -12,7 +12,7 @@ setInterval(updateStatus, config.interval);
  * Ping the API and update the displayed status if needed
  */
 function updateStatus() {
-   $.getJSON( config.api, function( data ) {
+   $.getJSON( config.api + "/v1/status", function( data ) {
       var date = new Date(data.date*1000);
       var options = {
          year: "numeric", month: "numeric", day: "numeric",
