@@ -13,18 +13,18 @@ setInterval(updateStatus, config.interval);
  */
 function updateStatus() {
    $.getJSON( config.api + "/v1/status", function( data ) {
-      var date = new Date(data.date*1000);
       var options = {
          year: "numeric", month: "numeric", day: "numeric",
          hour: "2-digit", minute: "2-digit"
       };
-      var formattedDate = date.toLocaleTimeString("en-us", options);
+      var formattedDate = new Date(data.date*1000).toLocaleTimeString("en-us", options);
+      var formattedPing = new Date(data.comm*1000).toLocaleTimeString("en-us", options);
 
       if (data.status === 'closed') {
-         updateDisplay('jsUnavailable', 'Unavailable', formattedDate);
+         updateDisplay('jsUnavailable', 'Unavailable', formattedDate, formattedPing);
          changeFavicon('assets/img/closedsign.gif');
       }else {
-         updateDisplay('jsAvailable', 'Available', formattedDate);
+         updateDisplay('jsAvailable', 'Available', formattedDate, formattedPing);
          if (alertRequested()) {
             postNotification();
          }
@@ -42,8 +42,9 @@ function updateStatus() {
  * @param state String - expects either js_available or js_unavailable
  * @param text String - The message to display in the main text area
  * @param time String - The value to display in the last updated field
+ * @param ping String - The value to display in the last changed field
  */
-function updateDisplay(state, text, time) {
+function updateDisplay(state, text, time, ping) {
    var container = $('#jsStatus');
    container.removeClass('jsAvailable');
    container.removeClass('jsUnavailable');
@@ -52,6 +53,7 @@ function updateDisplay(state, text, time) {
    $('#jsMessage').html(text);
 
    $('#jsUpdate').html(time);
+   $('#jsPing').html(ping);
 }
 
 
