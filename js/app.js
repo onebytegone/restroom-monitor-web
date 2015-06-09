@@ -17,8 +17,13 @@ function updateStatus() {
          year: "numeric", month: "numeric", day: "numeric",
          hour: "2-digit", minute: "2-digit"
       };
+      var updateInMillis = data.comm*1000;
       var formattedDate = new Date(data.date*1000).toLocaleTimeString("en-us", options);
-      var formattedPing = new Date(data.comm*1000).toLocaleTimeString("en-us", options);
+      var formattedPing = new Date(updateInMillis).toLocaleTimeString("en-us", options);
+
+      if (Date.now() - updateInMillis > 18000) {
+         console.log("Warning: stale data");
+      }
 
       if (data.status === 'closed') {
          updateDisplay('jsUnavailable', 'Unavailable', formattedDate, formattedPing);
