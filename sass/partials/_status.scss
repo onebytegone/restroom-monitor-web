@@ -74,3 +74,15 @@
       display: inline;
    }
 }
+
+.jsStaleSlight {
+   color: $color-stale-data-slight !important;
+}
+
+.jsStaleMedium {
+   color: $color-stale-data-medium !important;
+}
+
+.jsStaleMajor {
+   color: $color-stale-data-major !important;
+}

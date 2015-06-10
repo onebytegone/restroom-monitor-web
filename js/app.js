@@ -1,4 +1,5 @@
 var $ = require('jquery'),
+    _ = require('underscore'),
     config = require('./config.js');
 
 
@@ -13,33 +14,49 @@ setInterval(updateStatus, config.interval);
  */
 function updateStatus() {
    $.getJSON( config.api + "/v1/status", function( data ) {
-      var options = {
-         year: "numeric", month: "numeric", day: "numeric",
-         hour: "2-digit", minute: "2-digit"
-      };
-      var updateInMillis = data.comm*1000;
       var formattedDate = new Date(data.date*1000).toLocaleTimeString(config.time.locale, config.time.options);
-      var formattedPing = new Date(updateInMillis).toLocaleTimeString(config.time.locale, config.time.options);
 
-      if (Date.now() - updateInMillis > 18000) {
-         console.log("Warning: stale data");
-      }
+      updatePing(data.comm*1000)
 
       if (data.status === 'closed') {
-         updateDisplay('jsUnavailable', 'Unavailable', formattedDate, formattedPing);
+         updateDisplay('jsUnavailable', 'Unavailable', formattedDate);
          changeFavicon('assets/img/closedsign.gif');
       }else {
-         updateDisplay('jsAvailable', 'Available', formattedDate, formattedPing);
+         updateDisplay('jsAvailable', 'Available', formattedDate);
          if (alertRequested()) {
             postNotification();
          }
          alertRequested(false);
          changeFavicon('assets/img/opensign.gif');
       }
-
    });
 }
 
+/**
+ * Update what is shown to the user for last valid time
+ *
+ * @param ping String - The value to display in the last changed field
+ */
+function updatePing(lastPingMillis){
+   var timeOld = Date.now() - lastPingMillis;
+
+   var staleClass = _.reduce(_.keys(config.staleness), function(carry, key) {
+      if (config.staleness[key] <= timeOld) {
+         return key
+      }
+
+      return carry
+   }, "");
+
+   $('#jsPingStaleIndicator').removeClass()
+   if (staleClass !== "") {
+      $('#jsPingStaleIndicator').addClass(staleClass)
+   }
+
+   // Update time
+   var formatted = new Date(lastPingMillis).toLocaleTimeString(config.time.locale, config.time.options);
+   $('#jsPing').html(formatted);
+}
 
 /**
  * Update what is shown to the user
@@ -47,9 +64,8 @@ function updateStatus() {
  * @param state String - expects either js_available or js_unavailable
  * @param text String - The message to display in the main text area
  * @param time String - The value to display in the last updated field
- * @param ping String - The value to display in the last changed field
  */
-function updateDisplay(state, text, time, ping) {
+function updateDisplay(state, text, time) {
    var container = $('#jsStatus');
    container.removeClass('jsAvailable');
    container.removeClass('jsUnavailable');
@@ -58,7 +74,6 @@ function updateDisplay(state, text, time, ping) {
    $('#jsMessage').html(text);
 
    $('#jsUpdate').html(time);
-   $('#jsPing').html(ping);
 }
 
 

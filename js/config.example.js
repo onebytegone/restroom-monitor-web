@@ -1,6 +1,11 @@
 var config = {
    "api": "http://example.com/api.php",
    "interval": 1000,
+   "staleness": {
+      "jsStaleMajor": 120 * 1000,
+      "jsStaleMedium": 60 * 1000,
+      "jsStaleSlight": 30 * 1000
+   },
    "time": {
       "locale": "en-us",
       "options": {
