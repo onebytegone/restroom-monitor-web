@@ -18,8 +18,8 @@ function updateStatus() {
          hour: "2-digit", minute: "2-digit"
       };
       var updateInMillis = data.comm*1000;
-      var formattedDate = new Date(data.date*1000).toLocaleTimeString("en-us", options);
-      var formattedPing = new Date(updateInMillis).toLocaleTimeString("en-us", options);
+      var formattedDate = new Date(data.date*1000).toLocaleTimeString(config.time.locale, config.time.options);
+      var formattedPing = new Date(updateInMillis).toLocaleTimeString(config.time.locale, config.time.options);
 
       if (Date.now() - updateInMillis > 18000) {
          console.log("Warning: stale data");
