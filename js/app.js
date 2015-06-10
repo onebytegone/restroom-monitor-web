@@ -2,6 +2,9 @@ var $ = require('jquery'),
     _ = require('underscore'),
     config = require('./config.js');
 
+// Set page title
+document.title = config.pagetitle;
+
 
 // Setup
 updateStatus();
