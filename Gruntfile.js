@@ -4,7 +4,7 @@ module.exports = function(grunt) {
       watch: {
          sass: {
             files: ['sass/**/*.{scss,sass}', 'js/**/*.js'],
-            tasks: ['sass:dist', 'browserify:dist']
+            tasks: ['default']
          }
       },
       sass: {
@@ -22,10 +22,14 @@ module.exports = function(grunt) {
          dist: {
             src: ['js/app.js'],
             dest: 'combined_files/js/script.js'
+         },
+         stats: {
+            src: ['js/stats.js'],
+            dest: 'combined_files/js/stats.js'
          }
       }
    });
-   grunt.registerTask('default', ['sass:dist', 'browserify:dist']);
+   grunt.registerTask('default', ['sass:dist', 'browserify:dist', 'browserify:stats']);
    grunt.loadNpmTasks('grunt-sass');
    grunt.loadNpmTasks('grunt-browserify');
    grunt.loadNpmTasks('grunt-contrib-watch');
