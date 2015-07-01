@@ -10,6 +10,8 @@ $.getJSON( config.api + "/v1/history/stats", function( data ) {
    $('#js_hoursUsed').html((data['totalLength'] / 60 / 60).toFixed(2));
    $('#js_timeUsed').html(data['totalCount']);
    $('#js_avgTime').html((data['averageTime'] / 60).toFixed(4));
+   $('#js_avgPerDay').html(data['avgPerDay'].toFixed(2));
+   $('#js_avgPerHour').html(data['avgPerHour'].toFixed(2));
 
    var chartData = {
        labels: _.keys(data['popularity']),
