@@ -3,7 +3,8 @@ var $ = require('jquery'),
     Chart = require('chart.js'),
     config = require('./config.js');
 
-
+// Set page title
+document.title = config.stattitle;
 
 $.getJSON( config.api + "/v1/history/stats", function( data ) {
    $('#js_hoursUsed').html((data['totalLength'] / 60 / 60).toFixed(2));

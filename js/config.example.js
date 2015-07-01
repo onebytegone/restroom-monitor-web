@@ -1,5 +1,6 @@
 var config = {
    "pagetitle": "Restroom Monitor",
+   "stattitle": "Stats - Restroom Monitor",
    "api": "http://example.com/api.php",
    "interval": 1000,
    "staleness": {
