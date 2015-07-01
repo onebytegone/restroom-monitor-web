@@ -23,6 +23,7 @@
     "grunt-sass": "^1.0.0"
   },
   "dependencies": {
+    "chart.js": "^1.0.2",
     "jquery": "^2.1.4",
     "underscore": "^1.8.3"
   }
