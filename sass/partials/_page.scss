@@ -1,5 +1,30 @@
+.app {
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  min-height: 100vh;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
 .page {
+   -webkit-flex: 1;          /* Chrome */
+   -ms-flex: 1;              /* IE 10 */
+   flex: 1;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
    max-width: 800px;
    margin: 0 auto;
 }
 
+footer {
+   margin: 15px 0;
+   text-align: center;
+   a {
+      text-decoration: none;
+      color: #ccc;
+      &:hover {
+         color: #A19122;
+         text-decoration: underline;
+      }
+   }
+}
